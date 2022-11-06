@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生jsonp</title>
+</head>
+<body>
+    用户名：<input type="text">
+    <p></p>
+
+    <script>
+        const input = document.querySelector('input')
+        const p = document.querySelector('p')
+
+        //声明handle函数
+        function handle(data) {
+            console.log('111');
+                input.style.border = '1px solid #f00'
+                p.innerHTML = data.msg
+        }
+        //绑定事件，当input失去焦点时触发
+        //1. onfocus 事件在对象获得焦点时发生。
+        //2. onblur 事件会在对象失去焦点时发生;
+        //3.onload 事件会在页面或图像加载完成后立即发生
+        input.onblur = function() {
+            //获取用户输入的值
+            let username = this.value
+            //document.createElement()是在对象中创建一个对象，要与appendChild() 或insertBefore()方法联合使用。其中，appendChild()方法在节点的子节点列表末添加新的子节点。insertBefore() 方法在节点的子节点列表任意位置插入新的节点。
+            //创建script标签
+            const script = document.createElement('script')
+            //设置script的src属性
+            script.src = 'http://127.0.0.1:8000/check-username'
+            //将script插入到文档中
+            document.body.appendChild(script)
+        }
+    </script>
+</body>
+</html>
