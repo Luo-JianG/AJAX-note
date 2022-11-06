@@ -277,7 +277,7 @@ Nodemon工具      它将监控任何 更改源并自动重新启动服务器。
 
 ​      `x.onreadystatechange = function() {`
 
-​        `if (x.readystate === 4) {`
+​        `if (x.readyState === 4) {`
 
 ​          `isSending = false`
 
